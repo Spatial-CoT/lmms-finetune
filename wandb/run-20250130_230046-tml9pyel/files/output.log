@@ -1,0 +1,48 @@
+  0%|                                                                                             | 0/1345 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 201, in <module>
+    train()
+  File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 194, in train
+    trainer.train()
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+    return inner_training_loop(
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2345, in _inner_training_loop
+    for step, inputs in enumerate(epoch_iterator):
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/accelerate/data_loader.py", line 574, in __iter__
+    next_batch = next(dataloader_iter)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 708, in __next__
+    data = self._next_data()
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1458, in _next_data
+    idx, data = self._get_data()
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1410, in _get_data
+    success, data = self._try_get_data()
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1251, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/queue.py", line 180, in get
+    self.not_empty.wait(remaining)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/threading.py", line 324, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 201, in <module>
+[rank0]:     train()
+[rank0]:   File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 194, in train
+[rank0]:     trainer.train()
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2345, in _inner_training_loop
+[rank0]:     for step, inputs in enumerate(epoch_iterator):
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/accelerate/data_loader.py", line 574, in __iter__
+[rank0]:     next_batch = next(dataloader_iter)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 708, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1458, in _next_data
+[rank0]:     idx, data = self._get_data()
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1410, in _get_data
+[rank0]:     success, data = self._try_get_data()
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1251, in _try_get_data
+[rank0]:     data = self._data_queue.get(timeout=timeout)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/queue.py", line 180, in get
+[rank0]:     self.not_empty.wait(remaining)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/threading.py", line 324, in wait
+[rank0]:     gotit = waiter.acquire(True, timeout)
+[rank0]: KeyboardInterrupt

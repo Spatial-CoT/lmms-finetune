@@ -1,0 +1,28 @@
+  0%|                                                                                              | 0/540 [00:00<?, ?it/s]/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/checkpoint.py:87: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+  4%|███▌                                                                               | 23/540 [04:46<1:10:58,  8.24s/it]
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.1764705882352942e-06, 'epoch': 0.01}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2.3529411764705885e-06, 'epoch': 0.02}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 3.529411764705883e-06, 'epoch': 0.03}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 4.705882352941177e-06, 'epoch': 0.04}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 5.882352941176471e-06, 'epoch': 0.05}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 7.058823529411766e-06, 'epoch': 0.06}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 8.23529411764706e-06, 'epoch': 0.06}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 9.411764705882354e-06, 'epoch': 0.07}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.0588235294117648e-05, 'epoch': 0.08}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.1764705882352942e-05, 'epoch': 0.09}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.2941176470588238e-05, 'epoch': 0.1}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.4117647058823532e-05, 'epoch': 0.11}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.5294117647058822e-05, 'epoch': 0.12}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.647058823529412e-05, 'epoch': 0.13}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.7647058823529414e-05, 'epoch': 0.14}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.8823529411764708e-05, 'epoch': 0.15}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2e-05, 'epoch': 0.16}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.999981958814743e-05, 'epoch': 0.17}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.9999278359099398e-05, 'epoch': 0.18}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.9998376332384737e-05, 'epoch': 0.19}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.9997113540550702e-05, 'epoch': 0.19}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.9995490029161824e-05, 'epoch': 0.2}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.9993505856798242e-05, 'epoch': 0.21}

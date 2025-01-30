@@ -1,0 +1,7 @@
+assistant_key: gpt
+data_path: /home/anjali/spatial-cot/vsi-ft-dataset/data/qa_pairs/all_qa/all_qa_pairs_lmmsft-20250130v3.json
+eval_data_path: ./example_data/ego4d_video_eval.json
+image_folder: ./example_data/images
+num_frames: 8
+user_key: human
+video_folder: ./example_data/videos

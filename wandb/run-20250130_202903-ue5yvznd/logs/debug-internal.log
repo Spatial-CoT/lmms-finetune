@@ -1,0 +1,7 @@
+{"time":"2025-01-30T20:29:04.161304085Z","level":"INFO","msg":"stream: starting","core version":"0.19.5","symlink path":"/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/wandb/run-20250130_202903-ue5yvznd/logs/debug-core.log"}
+{"time":"2025-01-30T20:29:04.270239329Z","level":"INFO","msg":"created new stream","id":"ue5yvznd"}
+{"time":"2025-01-30T20:29:04.270267672Z","level":"INFO","msg":"stream: started","id":"ue5yvznd"}
+{"time":"2025-01-30T20:29:04.270301314Z","level":"INFO","msg":"writer: Do: started","stream_id":"ue5yvznd"}
+{"time":"2025-01-30T20:29:04.270308858Z","level":"INFO","msg":"handler: started","stream_id":"ue5yvznd"}
+{"time":"2025-01-30T20:29:04.270348051Z","level":"INFO","msg":"sender: started","stream_id":"ue5yvznd"}
+{"time":"2025-01-30T20:29:04.43277541Z","level":"INFO","msg":"Starting system monitor"}

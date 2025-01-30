@@ -1,0 +1,7 @@
+assistant_key: gpt
+data_path: /data_new/spatial/Training/qa_pairs/scannet/all_scannet_qa_train_lmms_finetune.json
+eval_data_path: ./example_data/ego4d_video_eval.json
+image_folder: ./example_data/images
+num_frames: 8
+user_key: human
+video_folder: ./example_data/videos

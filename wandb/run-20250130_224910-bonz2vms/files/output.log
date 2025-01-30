@@ -1,0 +1,73 @@
+  0%|                                                                                            | 0/10735 [00:00<?, ?it/s]/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/checkpoint.py:87: UserWarning: None of the inputs have requires_grad=True. Gradients will be None
+  warnings.warn(
+`use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+  0%|                                                                                 | 5/10735 [01:35<54:03:21, 18.14s/it]Traceback (most recent call last):
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 6.191950464396286e-08, 'epoch': 0.0}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.2383900928792572e-07, 'epoch': 0.0}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 1.8575851393188855e-07, 'epoch': 0.0}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 2.4767801857585145e-07, 'epoch': 0.0}
+{'loss': 0.0, 'grad_norm': 0.0, 'learning_rate': 3.0959752321981424e-07, 'epoch': 0.0}
+  File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 201, in <module>
+    train()
+  File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 194, in train
+    trainer.train()
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+    return inner_training_loop(
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2388, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 3518, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/accelerate/accelerator.py", line 2238, in backward
+    self.deepspeed_engine_wrapped.backward(loss, **kwargs)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/accelerate/utils/deepspeed.py", line 261, in backward
+    self.engine.backward(loss, **kwargs)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 1967, in backward
+    self.optimizer.backward(loss, retain_graph=retain_graph)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+    ret_val = func(*args, **kwargs)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/runtime/zero/stage3.py", line 2213, in backward
+    self.loss_scaler.backward(loss.float(), retain_graph=retain_graph)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/runtime/fp16/loss_scaler.py", line 63, in backward
+    scaled_loss.backward(retain_graph=retain_graph)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/_tensor.py", line 626, in backward
+    torch.autograd.backward(
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/autograd/__init__.py", line 347, in backward
+    _engine_run_backward(
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/autograd/graph.py", line 823, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 201, in <module>
+[rank0]:     train()
+[rank0]:   File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 194, in train
+[rank0]:     trainer.train()
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2388, in _inner_training_loop
+[rank0]:     tr_loss_step = self.training_step(model, inputs)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 3518, in training_step
+[rank0]:     self.accelerator.backward(loss, **kwargs)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/accelerate/accelerator.py", line 2238, in backward
+[rank0]:     self.deepspeed_engine_wrapped.backward(loss, **kwargs)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/accelerate/utils/deepspeed.py", line 261, in backward
+[rank0]:     self.engine.backward(loss, **kwargs)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+[rank0]:     ret_val = func(*args, **kwargs)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/runtime/engine.py", line 1967, in backward
+[rank0]:     self.optimizer.backward(loss, retain_graph=retain_graph)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/utils/nvtx.py", line 15, in wrapped_fn
+[rank0]:     ret_val = func(*args, **kwargs)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/runtime/zero/stage3.py", line 2213, in backward
+[rank0]:     self.loss_scaler.backward(loss.float(), retain_graph=retain_graph)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/deepspeed/runtime/fp16/loss_scaler.py", line 63, in backward
+[rank0]:     scaled_loss.backward(retain_graph=retain_graph)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/_tensor.py", line 626, in backward
+[rank0]:     torch.autograd.backward(
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/autograd/__init__.py", line 347, in backward
+[rank0]:     _engine_run_backward(
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/autograd/graph.py", line 823, in _engine_run_backward
+[rank0]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank0]: KeyboardInterrupt

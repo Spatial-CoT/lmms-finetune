@@ -1,4 +1,4 @@
-NUM_GPUS=1
+NUM_GPUS=2
 DISTRIBUTED_ARGS="
     --nnodes=1 \
     --nproc_per_node ${NUM_GPUS} \
@@ -9,12 +9,17 @@ DISTRIBUTED_ARGS="
 # arguments that are very likely to be changed
 # according to your own case
 MODEL_ID=llava-next-video-7b                            # model id; pick on by running `python supported_models.py`
-TRAIN_DATA_PATH=./example_data/ego4d_video_train.json   # path to the training data json file
-EVAL_DATA_PATH=./example_data/ego4d_video_eval.json     # path to the evaluation data json file (optional)
-IMAGE_FOLDER=./example_data/images                      # path to the image root folder; if provided, the image paths in the json should be relative
-VIDEO_FOLDER=./example_data/videos                      # path to the video root folder; if provided, the video paths in the json should be relative
-NUM_FRAMES=8                                            # how many frames are sampled from each video
+# TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_fixedd.json # path to the training data json file
+TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_20_percent.json
+# TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_1_percent.json
+# OUTPUT_DIR=/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/fine-tuning/ckpt0  # <--- SET OUTPUT DIR HERE
+OUTPUT_DIR=/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/fine-tuning/ckpt3  # <--- SET OUTPUT DIR HERE
 
+RUN_ID=${MODEL_ID}_lora-True_qlora-False
+EVAL_DATA_PATH=""    # path to the evaluation data json file (optional)
+IMAGE_FOLDER=""                     # path to the image root folder; if provided, the image paths in the json should be relative
+VIDEO_FOLDER=""                    # path to the video root folder; if provided, the video paths in the json should be relative
+NUM_FRAMES=8                                            # how many frames are sampled from each video
 TRAIN_VISION_ENCODER=False                              # whether train the vision encoder
 USE_VISION_LORA=False                                   # whether use lora for vision encoder (only effective when `TRAIN_VISION_ENCODER` is True)
 TRAIN_VISION_PROJECTOR=False                            # whether train the vision projector (only full finetuning is supported)
@@ -26,8 +31,8 @@ LORA_ALPHA=8                                            # the lora alpha (both l
 
 RUN_ID=${MODEL_ID}_lora-${USE_LORA}_qlora-${Q_LORA}     # a custom run id that determines the checkpoint folder and wandb run name
 
-DS_STAGE=zero3                                          # deepspeed stage; < zero2 | zero3 >
-PER_DEVICE_BATCH_SIZE=2                                 # batch size per GPU
+DS_STAGE=zero2                                          # deepspeed stage; < zero2 | zero3 >
+PER_DEVICE_BATCH_SIZE=8                                 # batch size per GPU
 GRAD_ACCUM=1                                            # gradient accumulation steps
 NUM_EPOCHS=5                                            # number of training epochs
 
@@ -35,14 +40,11 @@ LR=2e-5                                                 # learning rate
 MODEL_MAX_LEN=512                                       # maximum input length of the model
 
 
-torchrun $DISTRIBUTED_ARGS train.py \
+CUDA_VISIBLE_DEVICES=1,2 torchrun $DISTRIBUTED_ARGS train.py \
     --model_id $MODEL_ID \
     --data_path $TRAIN_DATA_PATH \
-    --eval_data_path $EVAL_DATA_PATH \
-    --image_folder $IMAGE_FOLDER \
-    --video_folder $VIDEO_FOLDER \
     --num_frames $NUM_FRAMES \
-    --output_dir ./checkpoints/$RUN_ID \
+    --output_dir $OUTPUT_DIR/$RUN_ID \
     --report_to wandb \
     --run_name $RUN_ID \
     --deepspeed ./ds_configs/${DS_STAGE}.json \
@@ -61,7 +63,7 @@ torchrun $DISTRIBUTED_ARGS train.py \
     --logging_steps 1 \
     --tf32 True \
     --model_max_length $MODEL_MAX_LEN \
-    --gradient_checkpointing True \
+    --gradient_checkpointing False \
     --dataloader_num_workers 4 \
     --train_vision_encoder $TRAIN_VISION_ENCODER \
     --use_vision_lora $USE_VISION_LORA \
@@ -69,5 +71,6 @@ torchrun $DISTRIBUTED_ARGS train.py \
     --use_lora $USE_LORA \
     --q_lora $Q_LORA \
     --lora_r $LORA_R \
-    --lora_alpha $LORA_ALPHA
+    --lora_alpha $LORA_ALPHA \
+
     

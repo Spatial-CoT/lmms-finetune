@@ -1,0 +1,61 @@
+  0%|                                                | 0/107345 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 201, in <module>
+    train()
+  File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 194, in train
+    trainer.train()
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+    return inner_training_loop(
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2345, in _inner_training_loop
+    for step, inputs in enumerate(epoch_iterator):
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/accelerate/data_loader.py", line 563, in __iter__
+    current_batch = next(dataloader_iter)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 708, in __next__
+    data = self._next_data()
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1480, in _next_data
+    return self._process_data(data)
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1505, in _process_data
+    data.reraise()
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/_utils.py", line 733, in reraise
+    raise exception
+AssertionError: Caught AssertionError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/datasets.py", line 131, in __getitem__
+    assert conv["from"] == (self.user_key if i % 2 == 0 else self.assistant_key), "Invalid conversation"
+AssertionError: Invalid conversation
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 201, in <module>
+[rank0]:     train()
+[rank0]:   File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/train.py", line 194, in train
+[rank0]:     trainer.train()
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2052, in train
+[rank0]:     return inner_training_loop(
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/transformers/trainer.py", line 2345, in _inner_training_loop
+[rank0]:     for step, inputs in enumerate(epoch_iterator):
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/accelerate/data_loader.py", line 563, in __iter__
+[rank0]:     current_batch = next(dataloader_iter)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 708, in __next__
+[rank0]:     data = self._next_data()
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1480, in _next_data
+[rank0]:     return self._process_data(data)
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1505, in _process_data
+[rank0]:     data.reraise()
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/_utils.py", line 733, in reraise
+[rank0]:     raise exception
+[rank0]: AssertionError: Caught AssertionError in DataLoader worker process 0.
+[rank0]: Original Traceback (most recent call last):
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+[rank0]:     data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:   File "/home/rilyn/anaconda3/envs/lmms-finetune/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+[rank0]:     data = [self.dataset[idx] for idx in possibly_batched_index]
+[rank0]:   File "/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/datasets.py", line 131, in __getitem__
+[rank0]:     assert conv["from"] == (self.user_key if i % 2 == 0 else self.assistant_key), "Invalid conversation"
+[rank0]: AssertionError: Invalid conversation

@@ -1,0 +1,15 @@
+{"time":"2025-01-30T21:21:02.245664955Z","level":"INFO","msg":"stream: starting","core version":"0.19.5","symlink path":"/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/wandb/run-20250130_212102-kms78i0t/logs/debug-core.log"}
+{"time":"2025-01-30T21:21:02.359015247Z","level":"INFO","msg":"created new stream","id":"kms78i0t"}
+{"time":"2025-01-30T21:21:02.359056313Z","level":"INFO","msg":"stream: started","id":"kms78i0t"}
+{"time":"2025-01-30T21:21:02.359129399Z","level":"INFO","msg":"writer: Do: started","stream_id":"kms78i0t"}
+{"time":"2025-01-30T21:21:02.359168592Z","level":"INFO","msg":"sender: started","stream_id":"kms78i0t"}
+{"time":"2025-01-30T21:21:02.35921024Z","level":"INFO","msg":"handler: started","stream_id":"kms78i0t"}
+{"time":"2025-01-30T21:21:02.566767739Z","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-01-30T21:21:03.44266422Z","level":"INFO","msg":"stream: closing","id":"kms78i0t"}
+{"time":"2025-01-30T21:21:03.442688435Z","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-01-30T21:21:03.443382806Z","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-01-30T21:21:03.847898009Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-01-30T21:21:03.960314013Z","level":"INFO","msg":"handler: closed","stream_id":"kms78i0t"}
+{"time":"2025-01-30T21:21:03.960377331Z","level":"INFO","msg":"writer: Close: closed","stream_id":"kms78i0t"}
+{"time":"2025-01-30T21:21:03.960383893Z","level":"INFO","msg":"sender: closed","stream_id":"kms78i0t"}
+{"time":"2025-01-30T21:21:03.960528743Z","level":"INFO","msg":"stream: closed","id":"kms78i0t"}

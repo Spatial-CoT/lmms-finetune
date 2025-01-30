@@ -100,13 +100,7 @@ register_model(
 
 # llava-next-video -------------------------------------------
 register_model(
-    model_id="llava-video-7b",
-    model_family_id="llava-next-video",
-    model_hf_path="lmms-lab/LLaVA-NeXT-Video-7B-Qwen2"
-)
-
-register_model(
-    model_id="llava-next-video-7b-hf",
+    model_id="llava-next-video-7b",
     model_family_id="llava-next-video",
     model_hf_path="llava-hf/LLaVA-NeXT-Video-7B-hf"
 )
