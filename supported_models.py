@@ -102,7 +102,7 @@ register_model(
 register_model(
     model_id="llava-video-7b",
     model_family_id="llava-next-video",
-    model_hf_path="lmms-lab/LLaVA-Video-7B-Qwen2"
+    model_hf_path="lmms-lab/LLaVA-NeXT-Video-7B-Qwen2"
 )
 
 register_model(

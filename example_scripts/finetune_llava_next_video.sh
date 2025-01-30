@@ -8,8 +8,8 @@ DISTRIBUTED_ARGS="
 
 # arguments that are very likely to be changed
 # according to your own case
-MODEL_ID=llava-video-7b                            # model id; pick on by running `python supported_models.py`
-TRAIN_DATA_PATH=/data_new/spatial/Training/qa_pairs/scannet/all_scannet_qa_train_lmms_finetune.json   # path to the training data json file
+MODEL_ID=llava-next-video-7b-hf                            # model id; pick on by running `python supported_models.py`
+TRAIN_DATA_PATH=/home/anjali/spatial-cot/vsi-ft-dataset/data/qa_pairs/all_qa/all_qa_pairs_lmmsft-20250130v3.json # path to the training data json file
 NUM_FRAMES=8                                            # how many frames are sampled from each video
 
 # Anjali: NOT using
