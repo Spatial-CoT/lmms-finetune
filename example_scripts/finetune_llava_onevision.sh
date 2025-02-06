@@ -8,15 +8,15 @@ DISTRIBUTED_ARGS="
 
 # arguments that are very likely to be changed
 # according to your own case
-MODEL_ID=llava-next-video-7b                            # model id; pick on by running `python supported_models.py`
+MODEL_ID=llava-onevision-7b-ov                            # model id; pick on by running `python supported_models.py`
 # TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_fixedd.json # path to the training data json file
-TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_20_percent.json
+# TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_1_percent.json
+TRAIN_DATA_PATH=/home/anjali/spatial-cot/vsi-ft-dataset/data/qa_pairs/no_ARKS_1_percent_0131.json
 # TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_1_percent.json
 # OUTPUT_DIR=/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/fine-tuning/ckpt0  # <--- SET OUTPUT DIR HERE
 # OUTPUT_DIR=/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/fine-tuning/ckpt3  # <--- SET OUTPUT DIR HERE
 OUTPUT_DIR=/home/anjali/spatial-cot/lmms-finetune/checkpoints
 
-RUN_ID=${MODEL_ID}_lora-True_qlora-False
 EVAL_DATA_PATH=""    # path to the evaluation data json file (optional)
 IMAGE_FOLDER=""                     # path to the image root folder; if provided, the image paths in the json should be relative
 VIDEO_FOLDER=""                    # path to the video root folder; if provided, the video paths in the json should be relative
@@ -30,16 +30,18 @@ Q_LORA=False                                            # whether use q-lora for
 LORA_R=8                                                # the lora rank (both llm and vision encoder)
 LORA_ALPHA=8                                            # the lora alpha (both llm and vision encoder)
 
-RUN_ID=${MODEL_ID}_lora-${USE_LORA}_qlora-${Q_LORA}     # a custom run id that determines the checkpoint folder and wandb run name
+RUN_ID=$(date +%Y%m%d)_${MODEL_ID}_${NUM_FRAMES}f    # a custom run id that determines the checkpoint folder and wandb run name
 
 DS_STAGE=zero3                                          # deepspeed stage; < zero2 | zero3 >
-PER_DEVICE_BATCH_SIZE=8                                 # batch size per GPU
-GRAD_ACCUM=1                                            # gradient accumulation steps
+PER_DEVICE_BATCH_SIZE=4                                 # batch size per GPU
+GRAD_ACCUM=4                                            # gradient accumulation steps
 NUM_EPOCHS=5                                            # number of training epochs
 
 LR=2e-5                                                 # learning rate
 MODEL_MAX_LEN=512                                       # maximum input length of the model
 
+# Add this before your torchrun command
+export TORCH_DISTRIBUTED_DEBUG=DETAIL
 
 CUDA_VISIBLE_DEVICES=2,3 torchrun $DISTRIBUTED_ARGS train.py \
     --model_id $MODEL_ID \
@@ -64,7 +66,7 @@ CUDA_VISIBLE_DEVICES=2,3 torchrun $DISTRIBUTED_ARGS train.py \
     --logging_steps 1 \
     --tf32 True \
     --model_max_length $MODEL_MAX_LEN \
-    --gradient_checkpointing False \
+    --gradient_checkpointing True \
     --dataloader_num_workers 4 \
     --train_vision_encoder $TRAIN_VISION_ENCODER \
     --use_vision_lora $USE_VISION_LORA \

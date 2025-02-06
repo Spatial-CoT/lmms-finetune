@@ -152,6 +152,7 @@ def train():
 
     # load data
     rank0_print("Loading data...")
+
     train_dataset = LazySupervisedDataset(
         data_path=data_args.data_path,
         image_folder=data_args.image_folder,
@@ -161,6 +162,9 @@ def train():
         user_key=data_args.user_key,
         assistant_key=data_args.assistant_key
     )
+
+    print(f"Number of training examples: {len(train_dataset)}")    
+
     if data_args.eval_data_path:
         eval_dataset = LazySupervisedDataset(
             data_path=data_args.eval_data_path,
@@ -184,6 +188,7 @@ def train():
     )
 
     # trainer
+    print("Intializing trainer...")
     trainer = TrainerWithCustomSampler(
         model=model,
         args=training_args,

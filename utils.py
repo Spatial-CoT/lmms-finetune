@@ -108,6 +108,29 @@ class TrainerWithCustomSampler(Trainer):
             is_text_only=is_text_only,
         )
 
+    # DELETE   
+    # def compute_loss(self, model, inputs, return_outputs=False, num_items_in_batch=None):
+    #     # Add debug prints before calling parent method
+    #     print("\n=== Pre-Loss Computation ===")
+    #     print(f"Input keys: {inputs.keys()}")
+    #     print(f"Batch size info: num_items_in_batch={num_items_in_batch}")
+        
+    #     # Call parent class's compute_loss
+    #     loss_output = super().compute_loss(model, inputs, return_outputs=return_outputs, num_items_in_batch=num_items_in_batch)
+        
+    #     # Add debug prints after parent method
+    #     if return_outputs:
+    #         loss, outputs = loss_output
+    #         print(f"\n=== Post-Loss Computation ===")
+    #         print(f"Loss value: {loss.item()}")
+    #         print(f"Output keys: {outputs.keys() if isinstance(outputs, dict) else 'tuple output'}")
+    #         return loss, outputs
+    #     else:
+    #         loss = loss_output
+    #         print(f"\n=== Post-Loss Computation ===")
+    #         print(f"Loss value: {loss.item()}")
+    #         return loss
+
 
 def find_all_linear_names(named_modules: Dict, target_modules: List[str]):
     cls = torch.nn.Linear

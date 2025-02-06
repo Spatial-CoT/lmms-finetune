@@ -1,7 +1,0 @@
-{"time":"2025-01-30T22:44:56.442144401Z","level":"INFO","msg":"stream: starting","core version":"0.19.5","symlink path":"/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/lmms-finetune/wandb/run-20250130_224456-olns46is/logs/debug-core.log"}
-{"time":"2025-01-30T22:44:56.548621598Z","level":"INFO","msg":"created new stream","id":"olns46is"}
-{"time":"2025-01-30T22:44:56.548652927Z","level":"INFO","msg":"stream: started","id":"olns46is"}
-{"time":"2025-01-30T22:44:56.548705705Z","level":"INFO","msg":"sender: started","stream_id":"olns46is"}
-{"time":"2025-01-30T22:44:56.548700555Z","level":"INFO","msg":"writer: Do: started","stream_id":"olns46is"}
-{"time":"2025-01-30T22:44:56.548743585Z","level":"INFO","msg":"handler: started","stream_id":"olns46is"}
-{"time":"2025-01-30T22:44:56.730647947Z","level":"INFO","msg":"Starting system monitor"}

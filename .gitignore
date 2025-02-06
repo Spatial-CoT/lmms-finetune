@@ -1,0 +1,26 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore experiment tracking
+wandb/
+logs/
+*.log
+
+# Ignore training artifacts
+checkpoints/
+*.ckpt
+*.pth
+*.h5
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore Jupyter Notebook cache
+.ipynb_checkpoints/
+
+# Ignore large or temp files
+collators/
+loaders/

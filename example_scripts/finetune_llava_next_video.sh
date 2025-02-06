@@ -1,4 +1,4 @@
-NUM_GPUS=2
+NUM_GPUS=1
 DISTRIBUTED_ARGS="
     --nnodes=1 \
     --nproc_per_node ${NUM_GPUS} \
@@ -8,21 +8,17 @@ DISTRIBUTED_ARGS="
 
 # arguments that are very likely to be changed
 # according to your own case
-MODEL_ID=llava-next-video-7b                            # model id; pick on by running `python supported_models.py`
-# TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_fixedd.json # path to the training data json file
-TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_20_percent.json
-# TRAIN_DATA_PATH=/home/rilyn/project-files/test/vsi-ft-dataset/data/qa_pairs/all_qa/fixed_dataset_1_percent.json
-# OUTPUT_DIR=/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/fine-tuning/ckpt0  # <--- SET OUTPUT DIR HERE
-# OUTPUT_DIR=/home/rilyn/project-files/01-pj-moog/moog-pipeline-ft/fine-tuning/ckpt3  # <--- SET OUTPUT DIR HERE
-OUTPUT_DIR=/home/anjali/spatial-cot/lmms-finetune/checkpoints
-
-RUN_ID=${MODEL_ID}_lora-True_qlora-False
-EVAL_DATA_PATH=""    # path to the evaluation data json file (optional)
-IMAGE_FOLDER=""                     # path to the image root folder; if provided, the image paths in the json should be relative
-VIDEO_FOLDER=""                    # path to the video root folder; if provided, the video paths in the json should be relative
+MODEL_ID=llava-next-video-7b-hf                            # model id; pick on by running `python supported_models.py`
+TRAIN_DATA_PATH=/home/anjali/spatial-cot/vsi-ft-dataset/data/qa_pairs/all_qa/all_qa_pairs_lmmsft-20250130v5.json # path to the training data json file
 NUM_FRAMES=8                                            # how many frames are sampled from each video
-TRAIN_VISION_ENCODER=True                               # whether train the vision encoder
-USE_VISION_LORA=False                                   # whether use lora for vision encoder (only effective when `TRAIN_VISION_ENCODER` is True)
+
+# Anjali: NOT using
+EVAL_DATA_PATH=""     # path to the evaluation data json file (optional)
+IMAGE_FOLDER=""       # path to the image root folder; if provided, the image paths in the json should be relative
+VIDEO_FOLDER=""       # path to the video root folder; if provided, the video paths in the json should be relative
+
+TRAIN_VISION_ENCODER=True                              # whether train the vision encoder
+USE_VISION_LORA=True                                   # whether use lora for vision encoder (only effective when `TRAIN_VISION_ENCODER` is True)
 TRAIN_VISION_PROJECTOR=True                            # whether train the vision projector (only full finetuning is supported)
 
 USE_LORA=True                                           # whether use lora for llm
@@ -30,9 +26,9 @@ Q_LORA=False                                            # whether use q-lora for
 LORA_R=8                                                # the lora rank (both llm and vision encoder)
 LORA_ALPHA=8                                            # the lora alpha (both llm and vision encoder)
 
-RUN_ID=${MODEL_ID}_lora-${USE_LORA}_qlora-${Q_LORA}     # a custom run id that determines the checkpoint folder and wandb run name
+RUN_ID=${MODEL_ID}_${NUM_FRAMES}f_lora-${USE_LORA}_qlora-${Q_LORA}     # a custom run id that determines the checkpoint folder and wandb run name
 
-DS_STAGE=zero3                                          # deepspeed stage; < zero2 | zero3 >
+DS_STAGE=zero2                                          # deepspeed stage; < zero2 | zero3 >
 PER_DEVICE_BATCH_SIZE=8                                 # batch size per GPU
 GRAD_ACCUM=1                                            # gradient accumulation steps
 NUM_EPOCHS=5                                            # number of training epochs
@@ -41,7 +37,7 @@ LR=2e-5                                                 # learning rate
 MODEL_MAX_LEN=512                                       # maximum input length of the model
 
 
-CUDA_VISIBLE_DEVICES=2,3 torchrun $DISTRIBUTED_ARGS train.py \
+torchrun $DISTRIBUTED_ARGS train.py \
     --model_id $MODEL_ID \
     --data_path $TRAIN_DATA_PATH \
     --num_frames $NUM_FRAMES \
